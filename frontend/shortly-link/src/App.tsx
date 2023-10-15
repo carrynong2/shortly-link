@@ -30,22 +30,25 @@ const App: React.FC = () => {
   }
 
   return (
-    <div>
-      <h1>Shorten URL</h1>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={url} onChange={(event) => setURL(event.target.value)} />
-        <button type="submit">Shorten</button>
+    <div className="flex justify-center items-center h-screen bg-stone-500 flex-col">
+      <h1 className="text-white text-center">Shorten URL</h1>
+      <form className="flex flex-col my-4" onSubmit={handleSubmit}>
+        <input className="h-12 outline-none w-80" type="text" value={url} onChange={(event) => setURL(event.target.value)} />
+        <button className="text-white my-4 bg-red-500 h-12 hover:bg-red-400" type="submit">Shorten</button>
       </form>
       {shortURL && (
         <div>
           <div>
-            <p>Shortened URL: <a href={`http://127.0.0.1:8000/${shortURL}`}>{`http://127.0.0.1:8000/${shortURL}`}</a></p>
+            <p className="text-white">Shortened URL: <a href={`http://127.0.0.1:8000/${shortURL}`}>{`http://127.0.0.1:8000/${shortURL}`}</a></p>
           </div>
-          <button onClick={handleOpenUrl}>Open URL</button>
-          <button onClick={handleCopyUrl}>Copy URL</button>
+          <div className="flex justify-between flex-col py-8">
+            <button className="text-white bg-sky-400 my-2 h-10 hover:bg-sky-300" onClick={handleOpenUrl}>Open URL</button>
+            <button className="text-white bg-sky-400 h-10 hover:bg-sky-300" onClick={handleCopyUrl}>Copy URL</button>
+          </div>
         </div>
-      )}
-    </div>
+      )
+      }
+    </div >
   )
 
 }
